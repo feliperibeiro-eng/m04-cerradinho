@@ -32,8 +32,8 @@ O Gemini indicou resistor entre 150 Ω e 220 Ω. A conta usa a Lei de Ohm descon
 ## 4. Construir
 
 - Projeto rodando no Wokwi: https://wokwi.com/projects/477958882440199169
-- Ciclo medido no timer do simulador: ___ s (critério: entre 1,9 s e 2,1 s)
-- Corrente calculada com 220 Ω: 13,6 mA (critério: abaixo de 20 mA) ✔
+- Ciclo medido no timer do simulador: ~2,0 s. Pausei a simulação em 2,080 s com o LED aceso e o pino 8 em "OUT High", dentro da janela esperada do 2º pulso (2,000–2,200 s). Critério de 1,9–2,1 s atendido. ✔
+- Corrente calculada com 220 Ω: 13,6 mA (critério: abaixo de 20 mA). ✔
 - Arquivos versionados nesta pasta: `sketch.ino`, `diagram.json` e captura de tela do simulador.
 
 ## 5. Comprovar
@@ -45,3 +45,18 @@ O Gemini indicou resistor entre 150 Ω e 220 Ω. A conta usa a Lei de Ohm descon
 
 
 **O que muda no código se o LED for para o pino 12?**
+
+
+## Desafio
+
+Pisca-pisca reescrito com `millis()` no lugar de `delay()`, com padrão de dois pulsos curtos (200 ms aceso, 200 ms apagado, 200 ms aceso) seguidos de uma pausa de 1400 ms. Como o `loop()` não trava mais, o rastreador vai conseguir ler o lacre na Aula 02 enquanto o LED pisca. Código em `desafio/`.
+
+Projeto no Wokwi: https://wokwi.com/projects/477966012765625345
+
+*Código feito com apoio do Claude; entendi a lógica e testei no Wokwi.*
+
+## Registro de IA
+
+- **Gemini:** etapa Consultar (cálculo do resistor).
+- **Claude:** apoio na redação do Contextualizar, na análise da resposta do Gemini, no ADR e no código do desafio.
+- **ADR:** [ADR-001-resistor.md](ADR-001-resistor.md)
