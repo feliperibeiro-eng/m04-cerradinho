@@ -11,11 +11,37 @@ O objetivo desta etapa é fazer o LED de status do rastreador da Cerradinho indi
 ## 2. Consultar
 
 **Pergunta feita ao Gemini:**
+"Que valor de resistor limita a corrente de um LED vermelho ligado a 5 V, e de onde sai essa conta?"
 
 **Resposta resumida:**
+O Gemini indicou resistor entre 150 Ω e 220 Ω. A conta usa a Lei de Ohm descontando a queda de tensão do LED vermelho (~2 V): R = (5 V − 2 V) / 0,02 A = 150 Ω. Disse que 220 Ω é o valor comercial imediatamente acima de 150 Ω e que, com ele, a corrente cai para ~13,6 mA, aumentando a vida útil do LED.
 
 ## 3. Confrontar
 
+**Afirmação conferida:** "150 Ω entrega a corrente máxima limite e 220 Ω é o valor comercial imediatamente acima."
+
+- **Lei de Ohm:** I = (5 − 2) / 220 = 13,6 mA, abaixo dos 20 mA recomendados. ✔ Confirmado.
+- **Datasheet do LED:** corrente recomendada de 20 mA e máximo absoluto entre 25 e 30 mA. Logo, 150 Ω (20 mA) não é o "limite máximo", e sim o valor recomendado. ⚠ Precisou de ajuste.
+- **Série comercial E12:** entre 150 Ω e 220 Ω existe o 180 Ω (≈16,7 mA). ✘ A afirmação de que 220 Ω é o "imediatamente acima" está errada.
+- **Animação circuito-led:** com 100 Ω: ___ mA (cálculo: 30 mA). Com 1 kΩ: ___ mA (cálculo: 3 mA).
+
+**Conclusão:** a conta da IA está correta, mas ela confundiu corrente recomendada com corrente máxima e errou o valor comercial seguinte. Mantive 220 Ω porque deixa margem em relação aos 20 mA. Essa correção virou o ADR.
+
+*Análise da resposta do Gemini feita com apoio do Claude e conferida por mim.*
+
 ## 4. Construir
 
+- Projeto rodando no Wokwi: https://wokwi.com/projects/477958882440199169
+- Ciclo medido no timer do simulador: ___ s (critério: entre 1,9 s e 2,1 s)
+- Corrente calculada com 220 Ω: 13,6 mA (critério: abaixo de 20 mA) ✔
+- Arquivos versionados nesta pasta: `sketch.ino`, `diagram.json` e captura de tela do simulador.
+
 ## 5. Comprovar
+
+**Qual corrente passa pelo LED com 330 Ω?**
+
+
+**Por que um resistor de 0 Ω queima o LED na placa real?**
+
+
+**O que muda no código se o LED for para o pino 12?**
