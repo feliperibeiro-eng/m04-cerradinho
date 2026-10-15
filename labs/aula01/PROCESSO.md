@@ -36,15 +36,18 @@ O Gemini indicou resistor entre 150 Ω e 220 Ω. A conta usa a Lei de Ohm descon
 - Corrente calculada com 220 Ω: 13,6 mA (critério: abaixo de 20 mA). ✔
 - Arquivos versionados nesta pasta: `sketch.ino`, `diagram.json` e captura de tela do simulador.
 
+
 ## 5. Comprovar
 
 **Qual corrente passa pelo LED com 330 Ω?**
-
+Usando a Lei de Ohm, considerando uma fonte de 5 V e um LED com queda de tensão de 2 V:
+I = (5 − 2) / 330 = 3 / 330 ≈ 0,00909 A ≈ 9,1 mA.
 
 **Por que um resistor de 0 Ω queima o LED na placa real?**
-
+Quando a resistência diminui, a corrente aumenta. Se a resistência for zero, a corrente pode atingir um valor muito alto, limitado apenas pelas características do circuito. Isso pode ultrapassar o limite máximo absoluto de corrente indicado no datasheet do LED, causando superaquecimento e danos. Por isso, é necessário utilizar um resistor para limitar a corrente e proteger o LED.
 
 **O que muda no código se o LED for para o pino 12?**
+No arquivo `sketch.ino`, a linha `const int PINO_LED = 8;` define que o LED está conectado ao pino digital 8. Para utilizar o pino 12, é necessário alterar a linha para `const int PINO_LED = 12;`. Além disso, o fio conectado ao Arduino também deve ser transferido para o pino digital 12, mantendo o resistor em série com o LED.
 
 
 ## Desafio
